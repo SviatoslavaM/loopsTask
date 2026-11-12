@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Практика: закріплюємо цикл for</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--tx:#1d2433;--mut:#5b6678;--ac:#4f46e5;--acs:#eef0ff;--ok:#15803d;--bad:#b45309;--bd:#dde2ec;--code:#111827;--codetx:#e5e7eb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#182033;--tx:#e8ecf5;--mut:#a3aec4;--ac:#8b93ff;--acs:#252d4d;--ok:#4ade80;--bad:#fbbf24;--bd:#2c3752;--code:#0a0e18}}
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.6rem;line-height:1.25;margin:8px 0 4px}
+h2{font-size:1.3rem;margin:26px 0 4px}
+.sub{color:var(--mut);margin:0 0 12px}
+.box{background:var(--acs);border-radius:14px;padding:12px 16px;margin:12px 0}
+.box ul{margin:4px 0 0;padding-left:20px}
+.prog{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0}
+.bar{height:12px;background:var(--bd);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.pt{font-size:.95rem;font-weight:600;margin-bottom:4px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:12px 0}
+.card.done{border-color:var(--ok)}
+.card h3{margin:0 0 6px;font-size:1.12rem}
+.lbl{font-size:.9rem;color:var(--mut);font-weight:600;margin:10px 0 4px}
+pre{background:var(--code);color:var(--codetx);border-radius:12px;padding:12px;margin:6px 0;overflow-x:auto;font:15px/1.5 ui-monospace,Menlo,Consolas,monospace}
+details{margin:8px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac);padding:6px 0}
+label.ck{display:flex;gap:10px;align-items:center;margin-top:10px;font-weight:600;cursor:pointer}
+label.ck input{width:24px;height:24px;accent-color:var(--ac)}
+.sol{border-left:4px solid var(--ok);padding-left:10px;margin-top:10px}
+.lock{text-align:center}
+.lock input{width:100%;max-width:240px;text-align:center;letter-spacing:.2em;border:2px solid var(--bd);border-radius:12px;padding:10px;background:var(--bg);color:var(--tx);font-size:16px;margin:8px 0}
+button.pr{background:var(--ac);color:#fff;border:0;border-radius:12px;padding:12px 20px;font:600 1rem inherit;font-family:inherit;cursor:pointer}
+.err{color:var(--bad);font-weight:600;min-height:1.4em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Практика: закріплюємо цикл <code>for</code></h1>
+<p class="sub">15 завдань від простих до складніших</p>
+<div class="box"><b>Як працювати</b><ul>
+<li>Код пиши в файлі <b>script.js</b> у своєму робочому просторі</li>
+<li>Відкрий <b>index.html</b> у браузері та консоль (F12 → Console)</li>
+<li>Використовуй тільки те, що вивчили: <code>for</code>, <code>if</code>, тернарний оператор, математичні й логічні оператори, шаблонний рядок</li>
+<li>Порівняй результат із очікуваним і познач завдання виконаним</li></ul></div>
+<div class="prog"><div class="pt" id="pt">Виконано: 0 з 15</div><div class="bar"><i id="pb"></i></div></div>
+<main id="main"></main>
+<section class="card lock" id="teacher"><h3>🔒 Відповіді для вчителя</h3>
+<p class="sub">Введи код, щоб побачити приклади розв’язків.</p>
+<input type="text" id="tk" inputmode="numeric" placeholder="Код" autocomplete="off"><div class="err" id="te"></div>
+<button class="pr" id="tb">Показати відповіді</button></section>
+</div>
+<script>
+const KEY='NTczMQ=='; // код вчителя: 5731 (btoa)
+const L=[
+{h:'Рівень 1. Сума та накопичувач',t:[
+{n:'Сума від 1 до 10',d:'Знайди суму всіх чисел від 1 до 10 і виведи її.',r:'55',p:'Створи змінну sum = 0 до циклу. У циклі додавай i: sum += i. Виводь результат після циклу.',s:'let sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}\nconsole.log(sum);'},
+{n:'Сума від 1 до 100',d:'Змінити в попередньому завданні тільки межу циклу.',r:'5050',p:'Тепер умова i <= 100.',s:'let sum = 0;\nfor (let i = 1; i <= 100; i++) {\n  sum += i;\n}\nconsole.log(sum);'},
+{n:'Середнє значення',d:'Знайди середнє арифметичне чисел від 1 до 10.',r:'5.5',p:'Середнє = сума / кількість чисел. Ділення роби після циклу.',s:'let sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}\nconsole.log(sum / 10);'},
+{n:'Сума парних',d:'Знайди суму парних чисел від 1 до 50.',r:'650',p:'Можна почати з 2 і йти з кроком 2 (i += 2) або перевіряти i % 2 === 0.',s:'let sum = 0;\nfor (let i = 2; i <= 50; i += 2) {\n  sum += i;\n}\nconsole.log(sum);'},
+{n:'Факторіал',d:'Знайди факторіал числа 5 (1 · 2 · 3 · 4 · 5).',r:'120',p:'Накопичувач для множення починається з 1, а не з 0: result *= i.',s:'let result = 1;\nfor (let i = 1; i <= 5; i++) {\n  result *= i;\n}\nconsole.log(result);'}]},
+{h:'Рівень 2. Умови всередині циклу',t:[
+{n:'Таблиця множення',d:'Виведи таблицю множення на 7 від 1 до 10 за допомогою шаблонного рядка.',r:'7 × 1 = 7\n7 × 2 = 14\n…\n7 × 10 = 70',p:'Шаблонний рядок у зворотних лапках: `7 × ${i} = ${7 * i}`.',s:'for (let i = 1; i <= 10; i++) {\n  console.log(`7 × ${i} = ${7 * i}`);\n}'},
+{n:'Скільки чисел кратних 3',d:'Порахуй, скільки чисел від 1 до 100 діляться на 3 без остачі.',r:'33',p:'Потрібен лічильник count = 0. Якщо i % 3 === 0, збільшуй count.',s:'let count = 0;\nfor (let i = 1; i <= 100; i++) {\n  if (i % 3 === 0) count++;\n}\nconsole.log(count);'},
+{n:'FizzBuzz',d:'Для чисел від 1 до 30: якщо число ділиться на 3 — виведи Fizz, на 5 — Buzz, на 3 і 5 разом — FizzBuzz, інакше саме число.',r:'1, 2, Fizz, 4, Buzz, Fizz, 7, … 15 → FizzBuzz',p:'Спочатку перевір ділення на 3 і 5 одночасно (i % 15 === 0), потім окремі випадки.',s:'for (let i = 1; i <= 30; i++) {\n  if (i % 15 === 0) console.log("FizzBuzz");\n  else if (i % 3 === 0) console.log("Fizz");\n  else if (i % 5 === 0) console.log("Buzz");\n  else console.log(i);\n}'},
+{n:'Парне чи непарне',d:'Для чисел від 1 до 10 виведи «1 — непарне», «2 — парне» і так далі. Використай тернарний оператор.',r:'1 — непарне\n2 — парне\n…',p:'умова ? якщо_так : якщо_ні. Обидва варіанти можна записати шаблонним рядком.',s:'for (let i = 1; i <= 10; i++) {\n  console.log(i % 2 === 0 ? `${i} — парне` : `${i} — непарне`);\n}'},
+{n:'Середнє парних',d:'Знайди середнє арифметичне парних чисел від 1 до 20.',r:'11',p:'Потрібні два накопичувачі: сума і кількість парних. Ділення після циклу.',s:'let sum = 0;\nlet count = 0;\nfor (let i = 1; i <= 20; i++) {\n  if (i % 2 === 0) {\n    sum += i;\n    count++;\n  }\n}\nconsole.log(sum / count);'}]},
+{h:'Рівень 3. Слова та візерунки',t:[
+{n:'Скільки літер «a»',d:'Порахуй, скільки разів літера a зустрічається у слові "JavaScript".',r:'2',p:'Перебери слово як у лабораторній: word[i]. Якщо word[i] === "a", збільшуй лічильник.',s:'let word = "JavaScript";\nlet count = 0;\nfor (let i = 0; i < word.length; i++) {\n  if (word[i] === "a") count++;\n}\nconsole.log(count);'},
+{n:'Слово навпаки',d:'Виведи слово "JavaScript" навпаки одним рядком.',r:'tpircSavaJ',p:'Іди від останньої букви до першої: i = word.length - 1 і i--. Додавай букви до рядка result.',s:'let word = "JavaScript";\nlet result = "";\nfor (let i = word.length - 1; i >= 0; i--) {\n  result += word[i];\n}\nconsole.log(result);'},
+{n:'Кратні 3 і 5 одночасно',d:'Виведи числа від 1 до 100, які діляться і на 3, і на 5 одночасно.',r:'15, 30, 45, 60, 75, 90 (кожне з нового рядка)',p:'Використай логічне «і»: &&.',s:'for (let i = 1; i <= 100; i++) {\n  if (i % 3 === 0 && i % 5 === 0) {\n    console.log(i);\n  }\n}'},
+{n:'Числа в один рядок',d:'Виведи числа від 1 до 10 в один рядок через пробіл (один console.log).',r:'1 2 3 4 5 6 7 8 9 10',p:'Накопичуй у рядку row: row += i + " ". Виводь після циклу.',s:'let row = "";\nfor (let i = 1; i <= 10; i++) {\n  row += i + " ";\n}\nconsole.log(row);'},
+{n:'Трикутник із зірочок',d:'Виведи трикутник із 5 рядків, де в кожному рядку на одну зірочку більше.',r:'*\n**\n***\n****\n*****',p:'Рядок row росте: на кожному кроці додай "*" і виведи row прямо в циклі.',s:'let row = "";\nfor (let i = 1; i <= 5; i++) {\n  row += "*";\n  console.log(row);\n}'}]}];
+const $=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+let num=0,done=0;const sols=[];const total=15;
+function upd(){document.getElementById('pt').textContent='Виконано: '+done+' з '+total;document.getElementById('pb').style.width=(done/total*100)+'%'}
+const m=document.getElementById('main');
+L.forEach(g=>{m.append($('h2','',g.h));g.t.forEach(t=>{num++;
+ const c=$('section','card');c.append($('h3','',num+'. '+t.n),$('div','',t.d),$('div','lbl','Очікуваний результат:'),$('pre','',t.r));
+ const dt=$('details');dt.append($('summary','','💡 Підказка'),$('div','',t.p));c.append(dt);
+ const sv=$('div','sol');sv.hidden=true;sv.append($('div','lbl','✅ Приклад розв’язку (для вчителя):'),$('pre','',t.s));c.append(sv);sols.push(sv);
+ const l=$('label','ck');const i=$('input');i.type='checkbox';i.onchange=()=>{c.classList.toggle('done',i.checked);done+=i.checked?1:-1;upd()};
+ l.append(i,document.createTextNode('Виконано'));c.append(l);m.append(c)})});
+const go=()=>{if(btoa(document.getElementById('tk').value.trim())===KEY){sols.forEach(s=>s.hidden=false);document.getElementById('teacher').hidden=true}else document.getElementById('te').textContent='Невірний код.'};
+document.getElementById('tb').onclick=go;document.getElementById('tk').onkeydown=e=>{if(e.key==='Enter')go()};
+upd();
+</script>
+</body>
+</html>
